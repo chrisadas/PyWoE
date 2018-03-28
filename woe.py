@@ -166,7 +166,7 @@ class WoE:
         # adding stat data to bins
         self.bins = pd.merge(stat, self.bins, left_index=True, right_on=['labels'])
         label_woe = self.bins[['woe', 'labels']].drop_duplicates()
-        self.df = pd.merge(self.df, label_woe, left_on=['labels'], right_on=['labels'])
+        self.df = pd.merge(self.df, label_woe, left_on=['labels'], right_on=['labels'], how='left')
 
     def transform(self, x, manual_woe=None, replace_missing=None):
         """
